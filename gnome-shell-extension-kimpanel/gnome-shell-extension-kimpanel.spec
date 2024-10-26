@@ -2,13 +2,13 @@
 %global gschemadir  %{_datadir}/glib-2.0/schemas
 
 Name:           gnome-shell-extension-kimpanel
-Version:        0^20240512.git9a7c460
+Version:        0^20241015.git4d5ab58
 Release:        %autorelease
 Summary:        KDE kimpanel protocol for gnome shell
 
 License:        GPLv2
 URL:            https://github.com/wengxt/gnome-shell-extension-kimpanel
-Source0:        https://github.com/wengxt/gnome-shell-extension-kimpanel/archive/9a7c46042c5a6ac3bfc265a7ca1cc4cedf65a6f3.tar.gz
+Source0:        https://github.com/wengxt/gnome-shell-extension-kimpanel/archive/4d5ab586b364fef9d710aafc8ea3f1b4e80f58da.tar.gz
 
 BuildArch:      noarch
 
@@ -23,7 +23,7 @@ indicator based tray icon for configurations.
 
 
 %prep
-%autosetup -n gnome-shell-extension-kimpanel-9a7c46042c5a6ac3bfc265a7ca1cc4cedf65a6f3
+%autosetup -n gnome-shell-extension-kimpanel-4d5ab586b364fef9d710aafc8ea3f1b4e80f58da
 
 
 %build

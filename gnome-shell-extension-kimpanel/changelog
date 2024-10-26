@@ -2,3 +2,5 @@
 - Init at commit 9a7c46042c5a6ac3bfc265a7ca1cc4cedf65a6f3
 * Sat Sep 07 21:52:51 UTC 2024 polykernel <81340136+polykernel@users.noreply.github.com> - 0^20240512.git9a7c460-2
 - Use %find_lang macro to handle locale files
+* Sat Oct 26 17:30:10 UTC 2024 polykernel <81340136+polykernel@users.noreply.github.com> - 0^20241015.git4d5ab58-1
+- Update to commit 4d5ab586b364fef9d710aafc8ea3f1b4e80f58da
