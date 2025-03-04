@@ -2,7 +2,7 @@
 %global gschemadir  %{_datadir}/glib-2.0/schemas
 
 Name:           gnome-shell-extension-clipboard-indicator
-Version:        65
+Version:        66
 Release:        %autorelease
 Summary:        The most popular clipboard manager for GNOME
 
@@ -25,10 +25,11 @@ the clipboard content, pinning and cut, copy, paste of images.
 %prep
 %autosetup
 
-# rename ja locale files to the match the extension name
-mv locale/ja/LC_MESSAGES/ja.mo locale/ja/LC_MESSAGES/clipboard-indicator.mo
-mv locale/ja/LC_MESSAGES/ja.po locale/ja/LC_MESSAGES/clipboard-indicator.po
-
+# rename some lingering locale files to the match the extension name
+for lc in ja ko; do
+  mv locale/$lc/LC_MESSAGES/$lc.mo locale/$lc/LC_MESSAGES/clipboard-indicator.mo
+  mv locale/$lc/LC_MESSAGES/$lc.po locale/$lc/LC_MESSAGES/clipboard-indicator.po
+done
 
 %build
 make
