@@ -30,8 +30,6 @@ mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
 
 cp -a * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
 
-rm -f %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/gschemas.compiled
-
 %files
 %license LICENSE.rst
 %{_datadir}/gnome-shell/extensions/%{extid}
