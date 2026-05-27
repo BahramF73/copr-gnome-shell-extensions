@@ -2,7 +2,7 @@
 
 Name:           gnome-shell-extension-clipboard-indicator
 Version:        71
-Release:        1%{?dist}
+Release:        %autorelease
 Summary:        Clipboard Indicator GNOME extension
 
 License:        MIT
@@ -37,3 +37,4 @@ rm -f %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/gschemas.c
 %{_datadir}/gnome-shell/extensions/%{extid}
 
 %changelog
+%autochangelog
