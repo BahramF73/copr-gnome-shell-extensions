@@ -18,6 +18,8 @@ BuildRequires:  gettext
 BuildRequires:  xsltproc
 BuildRequires:  glib2-devel
 BuildRequires:  gjs
+BuildRequires:  git
+BuildRequires:  desktop-file-utils
 
 Requires:       gnome-shell-extension-common
 
