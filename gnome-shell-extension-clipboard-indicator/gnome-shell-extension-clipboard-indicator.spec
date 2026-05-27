@@ -1,10 +1,9 @@
-%global extdir      clipboard-indicator@tudmotu.com
-%global gschemadir  %{_datadir}/glib-2.0/schemas
+%global extid clipboard-indicator@tudmotu.com
 
 Name:           gnome-shell-extension-clipboard-indicator
 Version:        71
-Release:        %autorelease
-Summary:        The most popular clipboard manager for GNOME, with over 2M downloads
+Release:        1%{?dist}
+Summary:        Clipboard Indicator GNOME extension
 
 License:        MIT
 URL:            https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator
@@ -12,9 +11,7 @@ Source0:        https://github.com/Tudmotu/gnome-shell-extension-clipboard-indic
 
 BuildArch:      noarch
 
-BuildRequires:  gettext make
-BuildRequires:  %{_bindir}/glib-compile-schemas
-Requires:       gnome-shell-extension-common
+Requires:       gnome-shell
 
 %description
 Clipboard Indicator is a Gnome Shell extension which provides an applet for
@@ -23,49 +20,20 @@ the clipboard content, pinning and cut, copy, paste of images.
 
 
 %prep
-%autosetup
-
-# rename some lingering locale files to the match the extension name
-for lc in ja ko; do
-  mv locale/$lc/LC_MESSAGES/$lc.mo locale/$lc/LC_MESSAGES/clipboard-indicator.mo
-  mv locale/$lc/LC_MESSAGES/$lc.po locale/$lc/LC_MESSAGES/clipboard-indicator.po
-done
+%autosetup -n gnome-shell-extension-clipboard-indicator-%{version}
 
 %build
-make
-
+# nothing
 
 %install
-mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extdir}
-mkdir -p %{buildroot}%{gschemadir}
-cp -pr schemas/org.gnome.shell.extensions.clipboard-indicator.gschema.xml %{buildroot}%{gschemadir}
-cp -pr --parents metadata.json stylesheet.css *.js \
-  locale/*/LC_MESSAGES/*.mo \
-  schemas/ \
-  %{buildroot}%{_datadir}/gnome-shell/extensions/%{extdir}
-%find_lang clipboard-indicator
+mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
 
+cp -a * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
 
-# Fedora and EPEL 8 handles post scripts via triggers
-%if 0%{?rhel} && 0%{?rhel} <= 7
-%postun
-if [ $1 -eq 0 ]; then
-  %{_bindir}/glib-compile-schemas %{gschemadir} &> /dev/null || true
-fi
+rm -f %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/gschemas.compiled
 
-%posttrans
-%{_bindir}/glib-compile-schemas %{gschemadir} &> /dev/null || true
-%endif
-
-
-%files -f clipboard-indicator.lang
+%files
 %license LICENSE.rst
-%{_datadir}/gnome-shell/extensions/%{extdir}/metadata.json
-%{_datadir}/gnome-shell/extensions/%{extdir}/stylesheet.css
-%{_datadir}/gnome-shell/extensions/%{extdir}/*.js
-%{_datadir}/gnome-shell/extensions/%{extdir}/schemas
-%{gschemadir}
-
+%{_datadir}/gnome-shell/extensions/%{extid}
 
 %changelog
-%autochangelog
