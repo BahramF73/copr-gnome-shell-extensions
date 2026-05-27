@@ -14,6 +14,7 @@ BuildArch:      noarch
 
 BuildRequires:  gettext
 BuildRequires:  make
+BuildRequires:  glib2-devel
 BuildRequires:  %{_bindir}/glib-compile-schemas
 
 Requires:       gnome-shell-extension-common
