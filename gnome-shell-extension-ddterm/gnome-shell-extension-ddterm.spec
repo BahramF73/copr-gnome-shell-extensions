@@ -1,63 +1,44 @@
-%global extdir      ddterm@amezin.github.com
-%global gschemadir  %{_datadir}/glib-2.0/schemas
+%global extid   ddterm@amezin.github.com
 
 Name:           gnome-shell-extension-ddterm
 Version:        63.0.1
-Release:        %autorelease
-Summary:        Drop-down terminal extension for GNOME Shell
+Release:        1%{?dist}
+Summary:        Another Drop Down Terminal Extension for GNOME Shell
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/ddterm/gnome-shell-extension-ddterm
-Source0:        https://github.com/ddterm/gnome-shell-extension-ddterm/archive/refs/tags/v%{version}.tar.gz
-
+Source0:        %{url}/releases/download/v%{version}/ddterm@amezin.github.com.shell-extension.zip
+Source1:        com.github.amezin.ddterm.gschema.override
 BuildArch:      noarch
 
-BuildRequires:  meson
-BuildRequires:  ninja-build
-BuildRequires:  gettext
-BuildRequires:  xsltproc
-BuildRequires:  glib2-devel
-BuildRequires:  gjs
-BuildRequires:  git
-BuildRequires:  desktop-file-utils
+BuildRequires:  /usr/bin/glib-compile-schemas
+BuildRequires:  unzip
 
-Requires:       gnome-shell-extension-common
+Requires:       gnome-shell
 
 %description
-ddterm is a drop-down terminal extension for GNOME Shell similar to Guake or Yakuake.
-It provides a fast-access terminal that slides down from the top of the screen.
+Another drop down terminal extension for GNOME Shell. With tabs. Works on Wayland natively
 
 %prep
-%autosetup -n gnome-shell-extension-ddterm-%{version}
 
 %build
-meson setup builddir
-ninja -C builddir
 
-# bundle step (important for GNOME extensions)
-ninja -C builddir bundle
+%check
 
 %install
-rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
+unzip %{SOURCE0} -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
+mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
+mv %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/com.github.amezin.ddterm.gschema.xml \
+	%{buildroot}%{_datadir}/glib-2.0/schemas/
+install -m644 %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/
 
-# install bundle (preferred instead of system-wide meson install)
-DESTDIR=%{buildroot} meson install -C builddir
-
-# convert the absolute symlink installed by meson into a relative one
-rm -f %{buildroot}%{_bindir}/com.github.amezin.ddterm
-ln -s ../share/gnome-shell/extensions/%{extdir}/bin/com.github.amezin.ddterm \
-	%{buildroot}%{_bindir}/com.github.amezin.ddterm
+rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/
 
 %files
-%license LICENSE*
-%doc README.md
+%{_datadir}/gnome-shell/extensions/%{extid}/
+%{_datadir}/glib-2.0/schemas/*
 
-%{_bindir}/com.github.amezin.ddterm
-%{_datadir}/applications/com.github.amezin.ddterm.desktop
-%{_datadir}/dbus-1/services/com.github.amezin.ddterm.service
-
-%{_datadir}/gnome-shell/extensions/*
-%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.ddterm.gschema.xml
 
 %changelog
 %autochangelog
