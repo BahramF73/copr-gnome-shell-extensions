@@ -17,6 +17,7 @@ BuildRequires:  ninja-build
 BuildRequires:  gettext
 BuildRequires:  xsltproc
 BuildRequires:  glib2-devel
+BuildRequires:  gjs
 
 Requires:       gnome-shell-extension-common
 
