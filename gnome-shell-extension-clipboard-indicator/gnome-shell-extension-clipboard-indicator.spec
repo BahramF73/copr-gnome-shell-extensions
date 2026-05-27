@@ -2,7 +2,7 @@
 
 Name:           gnome-shell-extension-clipboard-indicator
 Version:        71
-Release:        %autorelease
+Release:        1%{?dist}
 Summary:        Clipboard Indicator GNOME extension
 
 License:        MIT
