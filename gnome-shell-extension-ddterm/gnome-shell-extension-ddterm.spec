@@ -40,6 +40,11 @@ rm -rf %{buildroot}
 # install bundle (preferred instead of system-wide meson install)
 DESTDIR=%{buildroot} meson install -C builddir
 
+# convert the absolute symlink installed by meson into a relative one
+rm -f %{buildroot}%{_bindir}/com.github.amezin.ddterm
+ln -s ../share/gnome-shell/extensions/%{extdir}/bin/com.github.amezin.ddterm \
+	%{buildroot}%{_bindir}/com.github.amezin.ddterm
+
 %files
 %license LICENSE*
 %doc README.md
