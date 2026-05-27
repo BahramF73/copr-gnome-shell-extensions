@@ -25,7 +25,7 @@ ddterm is a drop-down terminal extension for GNOME Shell similar to Guake or Yak
 It provides a fast-access terminal that slides down from the top of the screen.
 
 %prep
-%autosetup -n ddterm-%{version}
+%autosetup -n gnome-shell-extension-ddterm-%{version}
 
 %build
 meson setup builddir
