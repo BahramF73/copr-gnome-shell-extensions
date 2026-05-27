@@ -25,7 +25,7 @@ ddterm is a drop-down terminal extension for GNOME Shell similar to Guake or Yak
 It provides a fast-access terminal that slides down from the top of the screen.
 
 %prep
-%autosetup -n gnome-shell-extension-ddterm-%{version}
+%autosetup -n ddterm-%{version}
 
 %build
 meson setup builddir
@@ -40,15 +40,16 @@ rm -rf %{buildroot}
 # install bundle (preferred instead of system-wide meson install)
 DESTDIR=%{buildroot} meson install -C builddir
 
-# schemas if any (safe guard)
-if [ -d %{buildroot}%{gschemadir} ]; then
-    %{_bindir}/glib-compile-schemas %{buildroot}%{gschemadir} || true
-fi
-
 %files
 %license LICENSE*
 %doc README.md
+
+%{_bindir}/com.github.amezin.ddterm
+%{_datadir}/applications/com.github.amezin.ddterm.desktop
+%{_datadir}/dbus-1/services/com.github.amezin.ddterm.service
+
 %{_datadir}/gnome-shell/extensions/*
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.ddterm.gschema.xml
 
 %changelog
 %autochangelog
