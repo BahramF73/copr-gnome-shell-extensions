@@ -8,7 +8,6 @@ Summary:        Another Drop Down Terminal Extension for GNOME Shell
 License:        GPL-3.0-or-later
 URL:            https://github.com/ddterm/gnome-shell-extension-ddterm
 Source0:        %{url}/releases/download/v%{version}/ddterm@amezin.github.com.shell-extension.zip
-Source1:        com.github.amezin.ddterm.gschema.override
 BuildArch:      noarch
 
 BuildRequires:  /usr/bin/glib-compile-schemas
@@ -31,7 +30,6 @@ unzip %{SOURCE0} -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
 mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
 mv %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/com.github.amezin.ddterm.gschema.xml \
 	%{buildroot}%{_datadir}/glib-2.0/schemas/
-install -m644 %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/
 
 rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/
 
