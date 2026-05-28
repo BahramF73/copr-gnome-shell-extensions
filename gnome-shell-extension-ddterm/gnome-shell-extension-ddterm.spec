@@ -8,6 +8,7 @@ Summary:        Another Drop Down Terminal Extension for GNOME Shell
 License:        GPL-3.0-or-later
 URL:            https://github.com/ddterm/gnome-shell-extension-ddterm
 Source0:        %{url}/releases/download/v%{version}/ddterm@amezin.github.com.shell-extension.zip
+
 BuildArch:      noarch
 
 BuildRequires:  /usr/bin/glib-compile-schemas
@@ -19,7 +20,7 @@ Requires:       gnome-shell >= 46
 Another drop down terminal extension for GNOME Shell. With tabs. Works on Wayland natively
 
 %prep
-%autosetup -n ddterm@amezin.github.com.shell-extension
+%setup -q -c -n ddterm@amezin.github.com.shell-extension -T
 
 %build
 
