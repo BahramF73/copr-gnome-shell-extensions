@@ -20,6 +20,7 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  gettext
 BuildRequires:  desktop-file-utils
+BuildRequires:  glib2-devel
 Requires:       gnome-shell >= 50
 
 %description
