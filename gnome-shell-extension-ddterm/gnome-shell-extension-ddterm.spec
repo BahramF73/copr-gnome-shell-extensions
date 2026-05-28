@@ -13,12 +13,13 @@ BuildArch:      noarch
 BuildRequires:  /usr/bin/glib-compile-schemas
 BuildRequires:  unzip
 
-Requires:       gnome-shell
+Requires:       gnome-shell >= 46
 
 %description
 Another drop down terminal extension for GNOME Shell. With tabs. Works on Wayland natively
 
 %prep
+%autosetup -n ddterm@amezin.github.com.shell-extension
 
 %build
 
