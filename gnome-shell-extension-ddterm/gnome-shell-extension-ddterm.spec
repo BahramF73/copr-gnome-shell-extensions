@@ -12,6 +12,7 @@ Source0:        %{url}/releases/download/v%{version}/%{extid}.shell-extension.zi
 BuildArch:      noarch
 
 BuildRequires:  unzip
+BuildRequires:  gettext
 BuildRequires:  glib2-devel
 
 Requires:       gnome-shell >= 46
@@ -23,17 +24,13 @@ Another drop down terminal extension for GNOME Shell. With tabs. Works on Waylan
 %setup -q -c -n "%{extid}" -T
 unzip -q -o %{SOURCE0} -d .
 
-%build
-
 %install
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
-
-cp -a * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
+cp -r -p * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
 
 # Compile GSettings schemas
 if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
-    glib-compile-schemas \
-        %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
+    glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
 fi
 
 %files
