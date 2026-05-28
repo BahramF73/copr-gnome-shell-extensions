@@ -37,7 +37,6 @@ fi
 %files
 %dir %{_datadir}/gnome-shell/extensions/%{extid}
 %{_datadir}/gnome-shell/extensions/%{extid}/*
-%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.*.gschema.xml
 
 %changelog
 %autochangelog
