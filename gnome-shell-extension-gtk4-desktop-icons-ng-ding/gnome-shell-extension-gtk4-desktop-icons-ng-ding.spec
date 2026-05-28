@@ -46,6 +46,9 @@ fi
 %{extdir}
 /usr/share/locale/*/LC_MESSAGES/gtk4-ding.mo
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.gtk4-ding.gschema.xml
+%config(noreplace) %{_sysconfdir}/apparmor.d/gtk4-desktop-icons
+%{_datadir}/applications/com.desktop.ding.desktop
+%{_datadir}/icons/hicolor/scalable/apps/com.desktop.ding.svg
 
 %changelog
 %autochangelog
