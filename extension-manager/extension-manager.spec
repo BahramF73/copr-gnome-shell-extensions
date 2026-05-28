@@ -8,7 +8,7 @@ Source0:        %{url}/archive/v%{version}.tar.gz
 
 BuildRequires:    git
 BuildRequires:    meson gcc blueprint-compiler gettext desktop-file-utils libappstream-glib
-BuildRequires:    pkgconfig(gtk4) pkgconfig(libadwaita-1) pkgconfig(json-glib-1.0) pkgconfig(libsoup-3.0) pkgconfig(libxml-2.0) pkgconfig(gio-unix-2.0)
+BuildRequires:    pkgconfig(gtk4) pkgconfig(libadwaita-1) >= 1.8.alpha pkgconfig(json-glib-1.0) pkgconfig(libsoup-3.0) pkgconfig(libxml-2.0) pkgconfig(gio-unix-2.0)
 
 %description
 A native tool for browsing, installing, and managing GNOME Shell Extensions
