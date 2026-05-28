@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global uuid gtk4-ding@smedius.gitlab.com
+%global extid gtk4-ding@smedius.gitlab.com
 
 Name:           gnome-shell-extension-gtk4-desktop-icons-ng-ding
 Version:        100.17
@@ -19,20 +19,21 @@ BuildArch:      noarch
 Gtk4 Desktop Icons NG is an extension and a program together for the GNOME Shell that renders icons on the desktop. It is a fork from DING.
 
 %prep
-%setup -q -c -n "%{uuid}" -T
+%setup -q -c -n "%{extid}" -T
 unzip -q -o %{SOURCE0} -d .
 
 %install
-mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}
-cp -r -p * %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}/
-if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}/schemas ]; then
-    glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{uuid}/schemas
+mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
+cp -r -p * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
+
+# Compile GSettings schemas
+if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
+    glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
 fi
 
 %files
-%dir %{_datadir}/gnome-shell/extensions/%{uuid}
-%{_datadir}/gnome-shell/extensions/%{uuid}/*
-%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.*.gschema.xml
+%dir %{_datadir}/gnome-shell/extensions/%{extid}
+%{_datadir}/gnome-shell/extensions/%{extid}/*
 
 %changelog
 %autochangelog
