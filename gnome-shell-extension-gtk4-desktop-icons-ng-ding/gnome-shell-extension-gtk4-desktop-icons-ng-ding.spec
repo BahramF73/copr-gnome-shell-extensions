@@ -19,6 +19,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  gettext
+BuildRequires:  desktop-file-utils
 Requires:       gnome-shell >= 50
 
 %description
