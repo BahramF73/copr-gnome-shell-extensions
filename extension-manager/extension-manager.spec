@@ -9,7 +9,7 @@ URL:            https://github.com/mjakeman/extension-manager
 Source0:        %{url}/archive/refs/tags/v%{version}.zip
 
 BuildRequires:    git
-BuildRequires:    meson gcc blueprint-compiler desktop-file-utils libappstream-glib elfutils-libelf-devel
+BuildRequires:    meson gcc blueprint-compiler desktop-file-utils libappstream-glib pkgconfig(libbacktrace)
 BuildRequires:    pkgconfig(gtk4) pkgconfig(libadwaita-1) pkgconfig(libsoup-3.0) pkgconfig(json-glib-1.0)
 Requires:       gtk4 libadwaita
 BuildArch:      noarch
