@@ -5,7 +5,7 @@
 %global giturl		https://gitlab.com/smedius/%{gitname}
 %global srcdir		%{_builddir}/%{gitname}-%{version}/src
 
-Name:		gnome-shell-extension-gtk4-desktop-icons-ng
+Name:		gnome-shell-extension-gtk4-desktop-icons-ng-ding
 Version:	100.23
 Release:	1%{?dist}
 Summary:	Libadwaita/Gtk4 port of Desktop Icons NG with multiple fixes and new features.
