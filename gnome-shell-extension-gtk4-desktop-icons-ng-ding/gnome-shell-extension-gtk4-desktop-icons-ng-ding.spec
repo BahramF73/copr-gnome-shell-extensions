@@ -15,12 +15,7 @@ URL:		https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding/
 Source0:	%{giturl}/-/archive/Gtk4-%{version}/desktop-icons-ng-Gtk4-%{version}.zip
 BuildArch:	noarch
 
-BuildRequires:  gobject-introspection
-BuildRequires:  intltool
-BuildRequires:  meson
-BuildRequires:  gettext
-BuildRequires:  desktop-file-utils
-BuildRequires:  glib2-devel
+BuildRequires:  gobject-introspection intltool meson gettext desktop-file-utils glib2-devel gtk-update-icon-cache
 Requires:       gnome-shell >= 50
 
 %description
