@@ -25,7 +25,7 @@ Another drop down terminal extension for GNOME Shell. With tabs. Works on Waylan
 %build
 
 %install
-mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
+install -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
 
 unzip -q %{SOURCE0} \
     -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
