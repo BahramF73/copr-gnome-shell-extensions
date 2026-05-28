@@ -1,3 +1,4 @@
+%global debug_package %{nil}
 %global extid ddterm@amezin.github.com
 
 Name:           gnome-shell-extension-ddterm
@@ -34,7 +35,9 @@ if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
 fi
 
 %files
-%{_datadir}/gnome-shell/extensions/%{extid}
+%dir %{_datadir}/gnome-shell/extensions/%{extid}
+%{_datadir}/gnome-shell/extensions/%{extid}/*
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.*.gschema.xml
 
 %changelog
 %autochangelog
