@@ -7,7 +7,7 @@ Release:        1%{?dist}
 Summary:        Libadwaita/Gtk4 port of Desktop Icons NG with multiple fixes and new features.
 License:        GPL-3.0-or-later
 URL:            https://gitlab.com/smedius/desktop-icons-ng
-Source0:        %{url}/-/raw/main/Downloads/%{uuid}.zip
+Source0:        %{url}/-/archive/Gtk4-%{version}/desktop-icons-ng-Gtk4-%{version}.zip
 
 BuildRequires:  unzip
 BuildRequires:  gettext
