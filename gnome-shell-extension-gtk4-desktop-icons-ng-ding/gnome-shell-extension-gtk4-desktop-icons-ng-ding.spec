@@ -2,7 +2,7 @@
 %global extid gtk4-ding@smedius.gitlab.com
 
 Name:           gnome-shell-extension-gtk4-desktop-icons-ng-ding
-Version:        100.22
+Version:        100.23
 Release:        1%{?dist}
 Summary:        Libadwaita/Gtk4 port of Desktop Icons NG with multiple fixes and new features.
 License:        GPL-3.0-or-later
@@ -12,7 +12,7 @@ Source0:        %{url}/-/archive/Gtk4-%{version}/desktop-icons-ng-Gtk4-%{version
 BuildRequires:  unzip
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
-Requires:       gnome-shell >= 49
+Requires:       gnome-shell >= 50
 BuildArch:      noarch
 
 %description
