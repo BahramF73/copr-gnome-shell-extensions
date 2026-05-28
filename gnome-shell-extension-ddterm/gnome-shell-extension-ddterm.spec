@@ -1,4 +1,4 @@
-%global extid   ddterm@amezin.github.com
+%global extid ddterm@amezin.github.com
 
 Name:           gnome-shell-extension-ddterm
 Version:        63.0.1
@@ -7,12 +7,12 @@ Summary:        Another Drop Down Terminal Extension for GNOME Shell
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/ddterm/gnome-shell-extension-ddterm
-Source0:        %{url}/releases/download/v%{version}/ddterm@amezin.github.com.shell-extension.zip
+Source0:        %{url}/releases/download/v%{version}/%{extid}.shell-extension.zip
 
 BuildArch:      noarch
 
-BuildRequires:  /usr/bin/glib-compile-schemas
 BuildRequires:  unzip
+BuildRequires:  glib2
 
 Requires:       gnome-shell >= 46
 
@@ -20,25 +20,25 @@ Requires:       gnome-shell >= 46
 Another drop down terminal extension for GNOME Shell. With tabs. Works on Wayland natively
 
 %prep
-%setup -q -c -n ddterm@amezin.github.com.shell-extension -T
+%setup -q -c -n %{extid} -T
 
 %build
 
-%check
-
 %install
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
-unzip %{SOURCE0} -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
-mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
-mv %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/com.github.amezin.ddterm.gschema.xml \
-	%{buildroot}%{_datadir}/glib-2.0/schemas/
 
-rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas/
+unzip -q %{SOURCE0} \
+    -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
+
+# Compile GSettings schemas
+if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
+    glib-compile-schemas \
+        %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
+fi
 
 %files
-%{_datadir}/gnome-shell/extensions/%{extid}/
-%{_datadir}/glib-2.0/schemas/*
-
+%dir %{_datadir}/gnome-shell/extensions/%{extid}
+%{_datadir}/gnome-shell/extensions/%{extid}/*
 
 %changelog
 %autochangelog
