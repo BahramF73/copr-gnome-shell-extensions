@@ -8,7 +8,7 @@ Summary:        Extend Gnome Shell with advanced tiling window management
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/domferr/tilingshell
-Source0:        %{url}/releases/download/v%{version}/tilingshell@ferrarodomenico.com.zip
+Source0:        %{url}/releases/download/%{version}/tilingshell@ferrarodomenico.com.zip
 
 BuildArch:      noarch
 
