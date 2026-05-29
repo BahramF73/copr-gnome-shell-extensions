@@ -50,6 +50,7 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas >/dev/null 2>&1 || :
 
 %{_datadir}/gnome-shell/extensions/%{extdir}
 %{_datadir}/glib-2.0/schemas/*arcmenu*
+%{_datadir}/locale/*/LC_MESSAGES/arcmenu.mo
 
 %changelog
 %autochangelog
