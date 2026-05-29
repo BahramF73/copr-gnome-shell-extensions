@@ -1,6 +1,6 @@
 %global extid   %{extname}@rastersoft.com
 %global extname ding
-%global extname_full desktop-icons-ng
+%global extname_full desktop-icons-ng-ding
 %global uuid    org.gnome.shell.extensions.%{extname}
 
 Name:           gnome-shell-extension-%{extname_full}
@@ -18,7 +18,7 @@ BuildRequires:  gobject-introspection
 BuildRequires:  intltool
 BuildRequires:  meson
 
-Requires:       gnome-shell >=46
+Requires:       gnome-shell >= 46
 Requires:       nautilus >= 46
 Requires:       xdg-desktop-portal-gtk
 
