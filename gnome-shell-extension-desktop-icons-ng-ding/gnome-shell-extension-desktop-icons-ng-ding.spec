@@ -1,9 +1,9 @@
 %global extid   %{extname}@rastersoft.com
 %global extname ding
-%global extname_full desktop-icons-ng-ding
+%global extname_full desktop-icons-ng
 %global uuid    org.gnome.shell.extensions.%{extname}
 
-Name:           gnome-shell-extension-%{extname_full}
+Name:           gnome-shell-extension-%{extname_full}-%{extname}
 Version:        50.0.0
 Release:        1%{?dist}
 Summary:        DING Desktop Icons New Generation
@@ -41,7 +41,7 @@ sed -e "/meson_post_install/d" -i meson.build
 
 
 %files -f %{extname}.lang
-#%license LICENSE
+%license COPYING
 %doc README.md
 %config %{_sysconfdir}/apparmor.d/desktop-icons-ng
 %{_datadir}/glib-2.0/schemas/%{uuid}.gschema.xml
