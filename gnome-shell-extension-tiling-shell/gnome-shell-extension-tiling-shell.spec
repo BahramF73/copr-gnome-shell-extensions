@@ -39,8 +39,7 @@ rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/node_modules
 rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/translations
 rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/doc
 
-find %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
--name "*.ts" -delete
+find %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid} -name '*.ts' -delete
 
 if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
 glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
