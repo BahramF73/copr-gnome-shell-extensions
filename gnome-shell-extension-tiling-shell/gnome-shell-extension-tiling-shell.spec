@@ -29,6 +29,9 @@ unzip -q -o %{SOURCE0} -d .
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
 cp -r -p * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
 
+# Upstream zip ships many files as executable; normalize to avoid shebang mangling failures.
+find %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid} -type f -exec chmod a-x {} +
+
 # Compile GSettings schemas
 if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
     glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
