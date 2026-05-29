@@ -15,7 +15,6 @@ BuildArch:      noarch
 BuildRequires:  gettext
 BuildRequires:  make
 BuildRequires:  glib2-devel
-BuildRequires:  %{_bindir}/glib-compile-schemas
 
 Requires:       gnome-shell-extension-common
 
@@ -26,18 +25,31 @@ familiar user experience and workflow.
 %prep
 %autosetup -n ArcMenu-v%{version}
 
-
 %build
+make extension
 
 %install
+rm -rf %{buildroot}
+
+# Install using upstream build system (IMPORTANT)
 make DESTDIR=%{buildroot} install
 
-%find_lang arcmenu
+# Fedora policy: ensure schemas are installed in correct location
+mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
+cp -a schemas/*.gschema.xml %{buildroot}%{_datadir}/glib-2.0/schemas/ || :
 
-%files -f arcmenu.lang
+%post
+glib-compile-schemas %{_datadir}/glib-2.0/schemas >/dev/null 2>&1 || :
+
+%postun
+glib-compile-schemas %{_datadir}/glib-2.0/schemas >/dev/null 2>&1 || :
+
+%files
 %license LICENSE
+%doc README.md RELEASENOTES.md
+
 %{_datadir}/gnome-shell/extensions/%{extdir}
-%{gschemadir}/*arcmenu*
+%{_datadir}/glib-2.0/schemas/*arcmenu*
 
 %changelog
 %autochangelog
