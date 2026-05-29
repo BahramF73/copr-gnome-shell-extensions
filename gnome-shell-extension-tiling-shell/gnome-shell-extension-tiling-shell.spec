@@ -32,14 +32,7 @@ npm run build
 %install
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
 
-cp -a ./* %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
-
-rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/src
-rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/node_modules
-rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/translations
-rm -rf %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/doc
-
-find %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid} -name '*.ts' -delete
+cp -a dist/* %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
 
 if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
 glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
