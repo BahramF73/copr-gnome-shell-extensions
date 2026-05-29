@@ -2,17 +2,18 @@
 %global extid tilingshell@ferrarodomenico.com
 
 Name:           gnome-shell-extension-tiling-shell
-Version:        17.3
+Version:        18.0
 Release:        1%{?dist}
 Summary:        Extend Gnome Shell with advanced tiling window management
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/domferr/tilingshell
-Source0:        %{url}/releases/download/%{version}/tilingshell@ferrarodomenico.com.zip
+Source0:        %{url}/archive/v%{version}.tar.gz
 
 BuildArch:      noarch
 
-BuildRequires:  unzip
+BuildRequires:  meson
+BuildRequires:  ninja-build
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
 
@@ -22,17 +23,16 @@ Requires:       gnome-shell >= 45
 Extend Gnome Shell with advanced tiling window management. Supports multiple monitors, Windows 11 Snap Assistant, Fancy Zones, automatic tiling, keyboard shortcuts, customised tiling layouts and more!
 
 %prep
-%setup -q -c -n "%{extid}" -T
-unzip -q -o %{SOURCE0} -d .
+%autosetup -n tilingshell-v%{version}
+
+%build
+meson setup builddir --prefix=%{_prefix} --libdir=%{_libdir}
+meson compile -C builddir
 
 %install
-mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
-cp -r -p * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
+meson install -C builddir --destdir %{buildroot}
 
-# Upstream zip ships many files as executable; normalize to avoid shebang mangling failures.
-find %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid} -type f -exec chmod a-x {} +
-
-# Compile GSettings schemas
+# Compile GSettings schemas if present
 if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
     glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
 fi
