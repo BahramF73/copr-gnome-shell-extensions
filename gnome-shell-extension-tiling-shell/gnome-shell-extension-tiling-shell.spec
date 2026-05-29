@@ -23,7 +23,7 @@ Requires:       gnome-shell >= 45
 Extend Gnome Shell with advanced tiling window management. Supports multiple monitors, Windows 11 Snap Assistant, Fancy Zones, automatic tiling, keyboard shortcuts, customised tiling layouts and more!
 
 %prep
-%autosetup -n tilingshell-v%{version}
+%autosetup -n tilingshell-%{version}
 
 %build
 meson setup builddir --prefix=%{_prefix} --libdir=%{_libdir}
