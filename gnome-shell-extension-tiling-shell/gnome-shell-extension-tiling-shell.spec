@@ -26,7 +26,7 @@ Extend GNOME Shell with advanced tiling window management.
 %autosetup -n tilingshell-%{version}
 
 %build
-npm ci
+npm install
 npm run build
 
 %install
