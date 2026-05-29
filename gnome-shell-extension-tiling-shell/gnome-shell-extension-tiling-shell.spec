@@ -1,5 +1,5 @@
 %global debug_package %{nil}
-%global extid [tilingshell@ferrarodomenico.com](mailto:tilingshell@ferrarodomenico.com)
+%global extid tilingshell@ferrarodomenico.com
 
 Name:           gnome-shell-extension-tiling-shell
 Version:        18.0
