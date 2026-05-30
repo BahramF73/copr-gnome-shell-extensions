@@ -2,14 +2,14 @@
 %global uuid netspeedsimplified
 %global extid %{uuid}@prateekmedia.extension
 
-Name:           gnome-shell-extension-%{uuid}
+Name:           gnome-shell-extension-net-speed-simplified
 Version:        46
 Release:        1%{?dist}
-Summary:        Simple network speed indicator for GNOME Shell
+Summary:        A Net Speed monitor With Loads of Customization
 
 License:        GPL-3.0-or-later
-URL:            https://github.com/prateekmedia/%{uuid}
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://github.com/prateekmedia/netspeedsimplified
+Source0:        %{extid}-%{version}.zip
 
 BuildArch:      noarch
 
@@ -18,13 +18,14 @@ BuildRequires:  glib2-devel
 Requires:       gnome-shell
 
 %description
-NetSpeed Simplified is a GNOME Shell extension that displays
-network upload and download speeds in the top panel.
+A Net Speed monitor With Loads of Customization.
+Supports GNOME 45 through 50. For GNOME Shell versions earlier than 45, use previous releases of this extension.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{extid}-%{version}
 
 %build
+
 # Nothing to build
 
 %install
