@@ -4,7 +4,7 @@
 
 Name:           gnome-shell-extension-net-speed-simplified
 Version:        46
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Net Speed monitor With Loads of Customization
 
 License:        GPL-3.0-or-later
