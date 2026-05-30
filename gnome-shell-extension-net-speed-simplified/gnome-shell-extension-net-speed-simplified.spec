@@ -24,6 +24,7 @@ Supports GNOME 45 through 50. For GNOME Shell versions earlier than 45, use prev
 %prep
 %setup -q -c -n "%{extid}" -T
 unzip -q -o %{SOURCE0} -d .
+rm -rf __MACOSX
 
 %install
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
