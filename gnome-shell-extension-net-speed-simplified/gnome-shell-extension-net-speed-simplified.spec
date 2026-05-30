@@ -9,7 +9,7 @@ Summary:        A Net Speed monitor With Loads of Customization
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/prateekmedia/netspeedsimplified
-Source0:        %{extid}-%{version}.zip
+Source0:        %{url}/releases/download/%{extid}-%{version}.zip
 
 BuildArch:      noarch
 
