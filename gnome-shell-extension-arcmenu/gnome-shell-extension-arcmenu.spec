@@ -3,7 +3,7 @@
 
 Name:           gnome-shell-extension-arcmenu
 Version:        69.2
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        Application Menu Extension for GNOME
 
 License:        GPLv2
