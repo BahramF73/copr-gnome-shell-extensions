@@ -4,8 +4,7 @@ Release:        2%{?dist}
 Summary:        Gtk4/libadwaita Desktop Icons NG extension for GNOME Shell
 License:        GPL-3.0-or-later
 URL:            https://gitlab.com/smedius/desktop-icons-ng
-Source0:        https://gitlab.com/smedius/desktop-icons-ng/-/archive/gtk4-%{version}/desktop-icons-ng-gtk4-%{version}.tar.gz
-
+Source0:        https://gitlab.com/smedius/desktop-icons-ng/-/archive/Gtk4-%{version}/desktop-icons-ng-Gtk4-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  meson
 BuildRequires:  ninja-build
