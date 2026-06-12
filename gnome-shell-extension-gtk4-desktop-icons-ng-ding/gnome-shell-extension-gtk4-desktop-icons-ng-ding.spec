@@ -1,54 +1,51 @@
-%global extuuid		gtk4-ding@smedius.gitlab.com
-%global extdir		%{_datadir}/gnome-shell/extensions/%{extuuid}
-%global gschemadir	%{_datadir}/glib-2.0/schemas
-%global gitname		desktop-icons-ng
-%global giturl		https://gitlab.com/smedius/%{gitname}
-%global srcdir		%{_builddir}/%{gitname}-%{version}/src
+Name:           gnome-shell-extension-gtk4-ding
+Version:        100.23
+Release:        2%{?dist}
+Summary:        Gtk4/libadwaita Desktop Icons NG extension for GNOME Shell
+License:        GPL-3.0-or-later
+URL:            https://gitlab.com/smedius/desktop-icons-ng
+Source0:        https://gitlab.com/smedius/desktop-icons-ng/-/archive/gtk4-%{version}/desktop-icons-ng-gtk4-%{version}.tar.gz
 
-Name:		gnome-shell-extension-gtk4-desktop-icons-ng-ding
-Version:	100.23
-Release:	1%{?dist}
-Summary:	Libadwaita/Gtk4 port of Desktop Icons NG with multiple fixes and new features.
+BuildArch:      noarch
+BuildRequires:  meson
+BuildRequires:  ninja-build
+BuildRequires:  gettext
+BuildRequires:  glib2-devel
 
-License:	GPL-3.0-or-later
-URL:		https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding/
-Source0:	%{giturl}/-/archive/Gtk4-%{version}/desktop-icons-ng-Gtk4-%{version}.zip
-BuildArch:	noarch
+Requires:       gjs
+Requires:       nautilus >= 3.38
+Requires:       gsettings-desktop-schemas
+Requires:       gnome-shell >= 49
+Requires:       gnome-shell < 51
 
-BuildRequires:  gobject-introspection intltool meson gettext desktop-file-utils glib2-devel gtk-update-icon-cache
-Requires:       gnome-shell >= 50
+%global debug_package %{nil}
 
 %description
-Gtk4 Desktop Icons NG is an extension and a program together for the GNOME Shell that renders icons on the desktop. It is a fork from DING.
+Gtk4 Desktop Icons NG (DING) is a Gtk4/libadwaita fork of the Desktop Icons GNOME Shell extension.
 
 %prep
-%autosetup -n %{gitname}-Gtk4-%{version}
-sed -e "/meson_post_install/d" -i meson.build
+%autosetup -n desktop-icons-ng-gtk4-%{version}
 
 %build
-%meson --localedir=%{_datadir}/locale
-%meson_build
+meson setup build --prefix=%{_prefix} --buildtype=release
+meson compile -C build
 
 %install
-%meson_install
+rm -rf %{buildroot}
+meson install -C build --destdir %{buildroot}
 
-%postun
-if [ $1 -eq 0 ] ; then
-  %{_bindir}/glib-compile-schemas %{gschemadir} &> /dev/null || :
-  %{_bindir}/glib-compile-schemas %{extdir}/schemas &> /dev/null || :
+find %{buildroot}%{_prefix} -xtype f -o -type f -o -type l | sed "s|%{buildroot}||" > filelist
+
+%files -f filelist
+%license COPYING
+%doc README.md HISTORY.md FEATURES.md ISSUES.md
+
+%post
+if command -v glib-compile-schemas >/dev/null 2>&1; then
+  glib-compile-schemas %{_datadir}/glib-2.0/schemas >/dev/null 2>&1 || :
 fi
 
-%posttrans
-%{_bindir}/glib-compile-schemas %{gschemadir} &> /dev/null || :
-%{_bindir}/glib-compile-schemas %{extdir}/schemas &> /dev/null || :
-
-%files
-%{extdir}
-/usr/share/locale/*/LC_MESSAGES/gtk4-ding.mo
-%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.gtk4-ding.gschema.xml
-%config(noreplace) %{_sysconfdir}/apparmor.d/gtk4-desktop-icons
-%{_datadir}/applications/com.desktop.ding.desktop
-%{_datadir}/icons/hicolor/scalable/apps/com.desktop.ding.svg
-
-%changelog
-%autochangelog
+%postun
+if command -v glib-compile-schemas >/dev/null 2>&1; then
+  glib-compile-schemas %{_datadir}/glib-2.0/schemas >/dev/null 2>&1 || :
+fi
