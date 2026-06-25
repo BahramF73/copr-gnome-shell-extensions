@@ -2,7 +2,7 @@
 %global extid ddterm@amezin.github.com
 
 Name:           gnome-shell-extension-ddterm
-Version:        63.2.1
+Version:        63.2.2
 Release:        1%{?dist}
 Summary:        Another Drop Down Terminal Extension for GNOME Shell
 
