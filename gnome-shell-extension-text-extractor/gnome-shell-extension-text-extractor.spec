@@ -1,14 +1,15 @@
 %global uuid text-extractor@aditya190803
 %global extdir %{_datadir}/gnome-shell/extensions/%{uuid}
+%global commit main
 
 Name:           gnome-shell-extension-text-extractor
-Version:        1.1.0
+Version:        5
 Release:        1%{?dist}
 Summary:        GNOME Shell extension for OCR text extraction from screen areas
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/Aditya190803/TextExtractor
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Source0:        %{url}/archive/refs/heads/%{commit}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -27,7 +28,7 @@ Text Extractor is a GNOME Shell extension that extracts text from a selected
 area of the screen using Tesseract OCR and copies the result to the clipboard.
 
 %prep
-%autosetup -n TextExtractor-%{version}
+%autosetup -n TextExtractor-%{commit}
 
 %build
 # Nothing to build
@@ -53,10 +54,10 @@ fi
 
 %files
 %license LICENSE
-%doc README.md
+%doc README.md CHANGELOG.md
 %{extdir}
 %{_bindir}/text-extractor-ocr
 
 %changelog
-* Mon Jun 29 2026 Bahram Farahmand <bahram.0098.bf@gmail.com> - 1.1.0-1
-- Initial Fedora package
+* Mon Jun 29 2026 Bahram Farahmand <bahram.0098.bf@gmail.com> - 5-1
+- Package upstream main branch snapshot
