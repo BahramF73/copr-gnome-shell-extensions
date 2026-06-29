@@ -27,7 +27,7 @@ Text Extractor is a GNOME Shell extension that extracts text from a selected
 area of the screen using Tesseract OCR and copies the result to the clipboard.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n TextExtractor-%{version}
 
 %build
 # Nothing to build
@@ -39,14 +39,14 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}%{extdir}
 cp -a build/* %{buildroot}%{extdir}/
 
-# OCR helper should not be bundled inside extension directory
+# Do not ship helper inside extension directory
 rm -f %{buildroot}%{extdir}/ocr_helper.py
 
-# Install OCR helper system-wide
+# Install helper
 mkdir -p %{buildroot}%{_bindir}
 install -m 0755 build/ocr_helper.py %{buildroot}%{_bindir}/text-extractor-ocr
 
-# Compile GSettings schemas if present
+# Compile schemas
 if [ -d %{buildroot}%{extdir}/schemas ]; then
     glib-compile-schemas %{buildroot}%{extdir}/schemas
 fi
