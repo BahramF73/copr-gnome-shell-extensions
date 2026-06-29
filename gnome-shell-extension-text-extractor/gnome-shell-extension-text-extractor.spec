@@ -8,7 +8,7 @@ Summary:        GNOME Shell extension for OCR text extraction from screen areas
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/Aditya190803/TextExtractor
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 
 BuildArch:      noarch
 
