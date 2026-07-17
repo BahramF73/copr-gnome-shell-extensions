@@ -4,7 +4,7 @@
 %global uuid    org.gnome.shell.extensions.%{extname}
 
 Name:           gnome-shell-extension-%{extname_full}-%{extname}
-Version:        50.3.0
+Version:        51.0.3
 Release:        1%{?dist}
 Summary:        DING Desktop Icons New Generation
 
