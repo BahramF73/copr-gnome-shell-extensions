@@ -37,14 +37,18 @@ sed -e "/meson_post_install/d" -i meson.build
 
 %install
 %meson_install
+mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas
+cp -a schemas/*.gschema.xml %{buildroot}%{_datadir}/glib-2.0/schemas/ || :
+mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
+cp -a redhat-linux-build/apparmor/%{extid} %{buildroot}%{_sysconfdir}/apparmor.d/ || :
 %find_lang %{extname}
 
 
 %files -f %{extname}.lang
 %license COPYING
 %doc README.md
-%config %{_sysconfdir}/apparmor.d/%{extid}
-%{_datadir}/glib-2.0/schemas/%{uuid}.gschema.xml
+%config(noreplace) %{_sysconfdir}/apparmor.d/%{extid}
+%{_datadir}/glib-2.0/schemas/*%{extname}*.gschema.xml
 %{_datadir}/gnome-shell/extensions/%{extid}/
 
 
