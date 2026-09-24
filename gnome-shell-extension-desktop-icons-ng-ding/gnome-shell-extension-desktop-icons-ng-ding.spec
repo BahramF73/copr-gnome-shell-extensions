@@ -43,7 +43,7 @@ sed -e "/meson_post_install/d" -i meson.build
 %files -f %{extname}.lang
 %license COPYING
 %doc README.md
-%config %{_sysconfdir}/apparmor.d/desktop-icons-ng
+%config %{_sysconfdir}/apparmor.d/%{extid}
 %{_datadir}/glib-2.0/schemas/%{uuid}.gschema.xml
 %{_datadir}/gnome-shell/extensions/%{extid}/
 
