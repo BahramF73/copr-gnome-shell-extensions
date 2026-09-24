@@ -2,7 +2,7 @@
 %global gschemadir  %{_datadir}/glib-2.0/schemas
 
 Name:           gnome-shell-extension-arcmenu
-Version:        69.2
+Version:        70.0
 Release:        1%{?dist}
 Summary:        Application Menu Extension for GNOME
 
