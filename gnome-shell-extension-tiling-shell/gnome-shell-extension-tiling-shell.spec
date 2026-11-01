@@ -24,6 +24,7 @@ Extend GNOME Shell with advanced tiling window management.
 %prep
 %setup -q -c -n "%{extid}" -T
 unzip -q -o %{SOURCE0} -d .
+sed -i '/^#!@GJS@ -m$/d' monitorDescription.js
 
 %install
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
