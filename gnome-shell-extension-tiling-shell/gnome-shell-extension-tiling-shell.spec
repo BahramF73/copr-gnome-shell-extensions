@@ -3,17 +3,16 @@
 
 Name:           gnome-shell-extension-tiling-shell
 Version:        18.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Extend GNOME Shell with advanced tiling window management
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/domferr/tilingshell
-Source0:        %{url}/archive/v%{version}.tar.gz
+Source0:        %{url}/releases/download/%{version}/%{extid}.zip
 
 BuildArch:      noarch
 
-BuildRequires:  nodejs
-BuildRequires:  npm
+BuildRequires:  unzip
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
 
@@ -23,16 +22,13 @@ Requires:       gnome-shell >= 45
 Extend GNOME Shell with advanced tiling window management.
 
 %prep
-%autosetup -n tilingshell-%{version}
-
-%build
-npm install
-npm run build
+%setup -q -c -n "%{extid}" -T
+unzip -q -o %{SOURCE0} -d .
 
 %install
 mkdir -p %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}
 
-cp -a dist/* %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
+cp -a * %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/
 
 if [ -d %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas ]; then
 glib-compile-schemas %{buildroot}%{_datadir}/gnome-shell/extensions/%{extid}/schemas
