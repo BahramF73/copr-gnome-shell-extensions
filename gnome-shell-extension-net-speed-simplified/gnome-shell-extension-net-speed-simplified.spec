@@ -3,7 +3,7 @@
 %global extid %{uuid}@prateekmedia.extension
 
 Name:           gnome-shell-extension-net-speed-simplified
-Version:        46
+Version:        49
 Release:        2%{?dist}
 Summary:        A Net Speed monitor With Loads of Customization
 
