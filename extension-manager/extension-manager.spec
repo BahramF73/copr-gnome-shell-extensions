@@ -1,5 +1,5 @@
 Name:           extension-manager
-Version:        0.6.5
+Version:        0.7.0
 Release:        1%{?dist}
 Summary:        A utility for browsing and installing GNOME Shell Extensions.
 License:        GPL-3.0-or-later
