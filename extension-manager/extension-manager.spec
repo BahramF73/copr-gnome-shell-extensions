@@ -39,6 +39,8 @@ glib-compile-schemas --dry-run --strict %{buildroot}%{_datadir}/glib-2.0/schemas
 %{_datadir}/icons/hicolor/symbolic/apps/*.svg
 %{_metainfodir}/*.metainfo.xml
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
+%{_datadir}/dbus-1/services/*.service
+%{_datadir}/gnome-shell/search-providers/*.ini
 
 %changelog
 %autochangelog
